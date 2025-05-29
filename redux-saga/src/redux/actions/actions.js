@@ -1,8 +1,7 @@
 import { GET_USERS } from '../constants';
 
-export const getUsers = (data) => {
+export const getUsers = () => {
     return {
-        type: GET_USERS,
-        payload: data
+        type: GET_USERS
     }
 }
