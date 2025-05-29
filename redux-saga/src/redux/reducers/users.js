@@ -1,4 +1,4 @@
-import { GET_USERS } from '../constants';
+import { GET_USERS_SUCCESS } from '../constants';
 
 const initialState = {
     users: []
@@ -6,7 +6,7 @@ const initialState = {
 
 const userData = (state = initialState, action) => {
     switch (action.type) {
-        case GET_USERS:
+        case GET_USERS_SUCCESS:
             return {
                 ...state, users: action.users
             }

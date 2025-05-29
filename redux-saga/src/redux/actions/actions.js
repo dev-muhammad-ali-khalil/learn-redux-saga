@@ -1,7 +1,7 @@
-import { GET_USERS } from '../constants';
+import { GET_USERS_REQUEST } from '../constants';
 
 export const getUsers = () => {
     return {
-        type: GET_USERS
+        type: GET_USERS_REQUEST
     }
 }
