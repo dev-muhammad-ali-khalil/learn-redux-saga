@@ -1,11 +1,19 @@
-import { call, put } from "redux-saga/effects";
+import { call, put, select } from "redux-saga/effects";
 import { GET_USERS_SUCCESS } from "../constants";
 
 const fetchUserData = () => {
-    return fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
+    return fetch('https://jsonplaceholder.typicode.com/users', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => response.json());
 }
 
-export function* fetchUsers(action) {
-    const users = yield call(fetchUserData);
-    yield put({ type: GET_USERS_SUCCESS, users });
+export function* fetchUsers() {
+    const data = yield select((state) => state.userData.users);
+    if (data.length === 0) {
+        const users = yield call(fetchUserData);
+        yield put({ type: GET_USERS_SUCCESS, users });
+    }
 }
