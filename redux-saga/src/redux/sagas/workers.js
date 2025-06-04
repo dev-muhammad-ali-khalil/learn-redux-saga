@@ -10,10 +10,14 @@ const fetchUserData = () => {
     }).then(response => response.json());
 }
 
-export function* fetchUsers() {
+export function* fetchUsers(action) {
     const data = yield select((state) => state.userData.users);
     if (data.length === 0) {
         const users = yield call(fetchUserData);
         yield put({ type: GET_USERS_SUCCESS, users });
+        action.payload.successToast();
+    }
+    else {
+        action.payload.warningToast();
     }
 }
