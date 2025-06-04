@@ -15,9 +15,9 @@ export function* fetchUsers(action) {
     if (data.length === 0) {
         const users = yield call(fetchUserData);
         yield put({ type: GET_USERS_SUCCESS, users });
-        action.payload.successToast();
+        action.payload.successToast("Users fetched successfully!");
     }
     else {
-        action.payload.warningToast();
+        action.payload.warningToast("Users already fetched!");
     }
 }

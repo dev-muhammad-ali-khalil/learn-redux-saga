@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../redux/actions/actions';
-import { successToast, warningToast } from '../utilities/toast';
+import { successToast, warningToast } from '../utilities/toastUtils';
 
 const Users = () => {
     const users = useSelector((state) => state.userData.users);
