@@ -1,6 +1,6 @@
 import React from 'react'
-import Users from './components/Users'
 import { Bounce, ToastContainer } from 'react-toastify'
+import Layout from './components/Layout'
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         newestOnTop={true}
         pauseOnHover
         transition={Bounce} />
-      <Users />
+      <Layout />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { call, put, select } from "redux-saga/effects";
 import { GET_USERS_SUCCESS } from "../constants";
+import { GET_POSTS_SUCCESS } from "../constants";
 
 const fetchUserData = () => {
     return fetch('https://jsonplaceholder.typicode.com/users', {
@@ -20,4 +21,14 @@ export function* fetchUsers(action) {
     else {
         action.payload.warningToast("Users already fetched!");
     }
+}
+
+export function* fetchPosts() {
+    const posts = yield fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => response.json());
+    yield put({ type: GET_POSTS_SUCCESS, posts });
 }
